@@ -26,6 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "hw_intf.h"
 /* USER CODE END Includes */
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
@@ -71,6 +72,7 @@ int main(void)
     MX_SPI2_Init();
     MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
+    hw_init_nrf24l01();
     /* USER CODE END 2 */
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
