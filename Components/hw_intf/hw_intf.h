@@ -29,13 +29,22 @@ extern "C" {
 
 #include "err_code.h"
 #include "nrf24l01.h"
+#include "joystick.h"
 
 err_code_t hw_intf_nrf24l01_spi_send(uint8_t *buf_send, uint16_t len, uint32_t timeout_ms);
 err_code_t hw_intf_nrf24l01_spi_recv(uint8_t *buf_recv, uint16_t len, uint32_t timeout_ms);
 err_code_t hw_intf_nrf24l01_set_cs(uint8_t level);
 err_code_t hw_intf_nrf24l01_set_ce(uint8_t level);
 
+err_code_t hw_intf_left_joystick_get_pos_x(uint16_t *pos_x);
+err_code_t hw_intf_left_joystick_get_pos_y(uint16_t *pos_y);
+err_code_t hw_intf_left_joystick_get_bt_status(uint8_t *bt_status);
+err_code_t hw_intf_right_joystick_get_pos_x(uint16_t *pos_x);
+err_code_t hw_intf_right_joystick_get_pos_y(uint16_t *pos_y);
+err_code_t hw_intf_right_joystick_get_bt_status(uint8_t *bt_status);
+
 err_code_t hw_init_nrf24l01(void);
+err_code_t hw_init_joystick(void);
 
 #ifdef __cplusplus
 }

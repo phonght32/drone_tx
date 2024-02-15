@@ -28,19 +28,58 @@ void MX_ADC2_Init(void)
 {
     /* USER CODE BEGIN ADC2_Init 0 */
     /* USER CODE END ADC2_Init 0 */
+    ADC_InjectionConfTypeDef sConfigInjected = {0};
     ADC_ChannelConfTypeDef sConfig = {0};
     /* USER CODE BEGIN ADC2_Init 1 */
     /* USER CODE END ADC2_Init 1 */
     /** Common config
     */
     hadc2.Instance = ADC2;
-    hadc2.Init.ScanConvMode = ADC_SCAN_DISABLE;
-    hadc2.Init.ContinuousConvMode = DISABLE;
+    hadc2.Init.ScanConvMode = ADC_SCAN_ENABLE;
+    hadc2.Init.ContinuousConvMode = ENABLE;
     hadc2.Init.DiscontinuousConvMode = DISABLE;
     hadc2.Init.ExternalTrigConv = ADC_SOFTWARE_START;
     hadc2.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-    hadc2.Init.NbrOfConversion = 1;
+    hadc2.Init.NbrOfConversion = 3;
     if (HAL_ADC_Init(&hadc2) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    /** Configure Injected Channel
+    */
+    sConfigInjected.InjectedChannel = ADC_CHANNEL_0;
+    sConfigInjected.InjectedRank = ADC_INJECTED_RANK_1;
+    sConfigInjected.InjectedNbrOfConversion = 4;
+    sConfigInjected.InjectedSamplingTime = ADC_SAMPLETIME_1CYCLE_5;
+    sConfigInjected.ExternalTrigInjecConv = ADC_INJECTED_SOFTWARE_START;
+    sConfigInjected.AutoInjectedConv = DISABLE;
+    sConfigInjected.InjectedDiscontinuousConvMode = DISABLE;
+    sConfigInjected.InjectedOffset = 0;
+    if (HAL_ADCEx_InjectedConfigChannel(&hadc2, &sConfigInjected) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    /** Configure Injected Channel
+    */
+    sConfigInjected.InjectedChannel = ADC_CHANNEL_1;
+    sConfigInjected.InjectedRank = ADC_INJECTED_RANK_2;
+    if (HAL_ADCEx_InjectedConfigChannel(&hadc2, &sConfigInjected) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    /** Configure Injected Channel
+    */
+    sConfigInjected.InjectedChannel = ADC_CHANNEL_2;
+    sConfigInjected.InjectedRank = ADC_INJECTED_RANK_3;
+    if (HAL_ADCEx_InjectedConfigChannel(&hadc2, &sConfigInjected) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    /** Configure Injected Channel
+    */
+    sConfigInjected.InjectedChannel = ADC_CHANNEL_3;
+    sConfigInjected.InjectedRank = ADC_INJECTED_RANK_4;
+    if (HAL_ADCEx_InjectedConfigChannel(&hadc2, &sConfigInjected) != HAL_OK)
     {
         Error_Handler();
     }
@@ -49,6 +88,20 @@ void MX_ADC2_Init(void)
     sConfig.Channel = ADC_CHANNEL_0;
     sConfig.Rank = ADC_REGULAR_RANK_1;
     sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
+    if (HAL_ADC_ConfigChannel(&hadc2, &sConfig) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    /** Configure Regular Channel
+    */
+    sConfig.Rank = ADC_REGULAR_RANK_2;
+    if (HAL_ADC_ConfigChannel(&hadc2, &sConfig) != HAL_OK)
+    {
+        Error_Handler();
+    }
+    /** Configure Regular Channel
+    */
+    sConfig.Rank = ADC_REGULAR_RANK_3;
     if (HAL_ADC_ConfigChannel(&hadc2, &sConfig) != HAL_OK)
     {
         Error_Handler();
