@@ -31,8 +31,8 @@ extern "C" {
 #include "nrf24l01.h"
 #include "joystick.h"
 
-err_code_t hw_intf_nrf24l01_spi_send(uint8_t *buf_send, uint16_t len, uint32_t timeout_ms);
-err_code_t hw_intf_nrf24l01_spi_recv(uint8_t *buf_recv, uint16_t len, uint32_t timeout_ms);
+err_code_t hw_intf_nrf24l01_spi_send(uint8_t *buf_send, uint16_t len);
+err_code_t hw_intf_nrf24l01_spi_recv(uint8_t *buf_recv, uint16_t len);
 err_code_t hw_intf_nrf24l01_set_cs(uint8_t level);
 err_code_t hw_intf_nrf24l01_set_ce(uint8_t level);
 

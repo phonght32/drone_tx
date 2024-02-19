@@ -28,16 +28,16 @@
 nrf24l01_handle_t nrf24l01_handle;
 joystick_handle_t left_joystick_handle, right_joystick_handle;
 
-err_code_t hw_intf_nrf24l01_spi_send(uint8_t *buf_send, uint16_t len, uint32_t timeout_ms)
+err_code_t hw_intf_nrf24l01_spi_send(uint8_t *buf_send, uint16_t len)
 {
-	HAL_SPI_Transmit(NRF24L01_SPI, buf_send, len, timeout_ms);
+	HAL_SPI_Transmit(NRF24L01_SPI, buf_send, len, 100);
 
 	return ERR_CODE_SUCCESS;
 }
 
-err_code_t hw_intf_nrf24l01_spi_recv(uint8_t *buf_recv, uint16_t len, uint32_t timeout_ms)
+err_code_t hw_intf_nrf24l01_spi_recv(uint8_t *buf_recv, uint16_t len)
 {
-	HAL_SPI_Receive(NRF24L01_SPI, buf_recv, len, timeout_ms);
+	HAL_SPI_Receive(NRF24L01_SPI, buf_recv, len, 100);
 
 	return ERR_CODE_SUCCESS;
 }
