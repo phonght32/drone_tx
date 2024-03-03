@@ -11,3 +11,6 @@
 [submodule "Components/hd44780"]
 	path = Components/hd44780
 	url = git@github.com:phonght32/hd44780.git
+[submodule "Components/drone_tx_protocol"]
+	path = Components/drone_tx_protocol
+	url = git@github.com:phonght32/drone_tx_protocol.git
