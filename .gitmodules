@@ -8,3 +8,6 @@
 [submodule "Components/joystick"]
 	path = Components/joystick
 	url = git@github.com:phonght32/joystick.git
+[submodule "Components/hd44780"]
+	path = Components/hd44780
+	url = git@github.com:phonght32/hd44780.git
