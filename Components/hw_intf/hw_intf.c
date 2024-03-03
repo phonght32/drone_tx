@@ -195,7 +195,7 @@ err_code_t hw_init_joystick(void)
 	joystick_cfg_t left_joystick_cfg = {
 		.get_pos_x = hw_intf_left_joystick_get_pos_x,
 		.get_pos_y = hw_intf_left_joystick_get_pos_y,
-		.get_bt_status = hw_intf_left_joystick_get_bt_status,
+		.get_button = hw_intf_left_joystick_get_bt_status,
 	};
 	joystick_set_config(left_joystick_handle, left_joystick_cfg);
 	joystick_config(left_joystick_handle);
@@ -204,7 +204,7 @@ err_code_t hw_init_joystick(void)
 	joystick_cfg_t right_joystick_cfg = {
 		.get_pos_x = hw_intf_right_joystick_get_pos_x,
 		.get_pos_y = hw_intf_right_joystick_get_pos_y,
-		.get_bt_status = hw_intf_right_joystick_get_bt_status,
+		.get_button = hw_intf_right_joystick_get_bt_status,
 	};
 	joystick_set_config(right_joystick_handle, right_joystick_cfg);
 	joystick_config(right_joystick_handle);
