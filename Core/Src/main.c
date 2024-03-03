@@ -74,6 +74,7 @@ int main(void)
     /* USER CODE BEGIN 2 */
     hw_init_nrf24l01();
     hw_init_joystick();
+    hw_init_hd44780();
     /* USER CODE END 2 */
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
@@ -81,6 +82,7 @@ int main(void)
     {
         /* USER CODE END WHILE */
         /* USER CODE BEGIN 3 */
+        HAL_Delay(100);
     }
     /* USER CODE END 3 */
 }

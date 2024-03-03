@@ -1,6 +1,11 @@
 #include "spi.h"
 #include "adc.h"
+#include "i2c.h"
+
 #include "hw_intf.h"
+#include "nrf24l01.h"
+#include "joystick.h"
+#include "hd44780.h"
 
 #define NRF24L01_SPI                 	&hspi1
 #define NRF24L01_SPI_CS_PORT         	GPIOA
@@ -25,8 +30,11 @@
 #define ADC_SAMPLE_CYCLES               ADC_SAMPLETIME_13CYCLES_5
 #define ADC_CONV_TIMEOUT_MS             10
 
+#define HD44780_I2C  					hi2c1
+
 nrf24l01_handle_t nrf24l01_handle;
 joystick_handle_t left_joystick_handle, right_joystick_handle;
+hd44780_handle_t hd44780_handle;
 
 err_code_t hw_intf_nrf24l01_spi_send(uint8_t *buf_send, uint16_t len)
 {
@@ -150,6 +158,13 @@ err_code_t hw_intf_right_joystick_get_bt_status(uint8_t *bt_status)
 	return ERR_CODE_SUCCESS;
 }
 
+err_code_t hw_intf_hd44780_i2c_send(uint8_t *buf_send, uint16_t len)
+{
+	HAL_I2C_Master_Transmit(&HD44780_I2C, HD77480_I2C_ADDR<<1, buf_send, len, 100);
+
+	return ERR_CODE_SUCCESS;
+}
+
 err_code_t hw_init_nrf24l01(void)
 {
 	nrf24l01_handle = nrf24l01_init();
@@ -193,6 +208,21 @@ err_code_t hw_init_joystick(void)
 	};
 	joystick_set_config(right_joystick_handle, right_joystick_cfg);
 	joystick_config(right_joystick_handle);
+
+	return ERR_CODE_SUCCESS;
+}
+
+err_code_t hw_init_hd44780(void)
+{
+	hd44780_handle = hd44780_init();
+	hd44780_cfg_t hd44780_cfg = {
+		.size = HD44780_SIZE_20_4,
+		.comm_mode = HD44780_COMM_MODE_I2C,
+		.i2c_send = hw_intf_hd44780_i2c_send,
+		.delay = HAL_Delay
+	};
+	hd44780_set_config(hd44780_handle, hd44780_cfg);
+	hd44780_config(hd44780_handle);
 
 	return ERR_CODE_SUCCESS;
 }

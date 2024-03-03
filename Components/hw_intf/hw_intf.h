@@ -28,8 +28,6 @@ extern "C" {
 #endif
 
 #include "err_code.h"
-#include "nrf24l01.h"
-#include "joystick.h"
 
 err_code_t hw_intf_nrf24l01_spi_send(uint8_t *buf_send, uint16_t len);
 err_code_t hw_intf_nrf24l01_spi_recv(uint8_t *buf_recv, uint16_t len);
@@ -43,8 +41,11 @@ err_code_t hw_intf_right_joystick_get_pos_x(uint16_t *pos_x);
 err_code_t hw_intf_right_joystick_get_pos_y(uint16_t *pos_y);
 err_code_t hw_intf_right_joystick_get_bt_status(uint8_t *bt_status);
 
+err_code_t hw_intf_hd44780_i2c_send(uint8_t *buf_send, uint16_t len);
+
 err_code_t hw_init_nrf24l01(void);
 err_code_t hw_init_joystick(void);
+err_code_t hw_init_hd44780(void);
 
 #ifdef __cplusplus
 }

@@ -50,6 +50,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/drone_tx/Components/mcu_port}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/drone_tx/Components/hw_intf}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/drone_tx/Components/joystick}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/drone_tx/Components/hd44780}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1522010769" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
